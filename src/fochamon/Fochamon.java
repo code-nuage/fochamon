@@ -2,37 +2,54 @@ package fochamon;
 
 public class Fochamon {
 	private String name;
+	private Type[] types;
 	private Attack[] attacks;
 	private Status status;
-	private int max_hp;
-	private int current_hp;
-	private int attack_value;
-	private int special_attack_value;
-	private int defense_value;
-	private int special_defense_value;
+	private int maxHp;
+	private int currentHp;
+	private int attackValue;
+	private int specialAttackValue;
+	private int defenseValue;
+	private int specialDefenseValue;
 	
 	public Fochamon(
 			String name,
-			int max_hp,
-			int attack_value,
-			int special_attack_value,
-			int defense_value,
-			int special_defense_value) {
+			int maxHp,
+			int attackValue,
+			int specialAttackValue,
+			int defenseValue,
+			int specialDefenseValue) {
 		this.name = name;
-		this.max_hp = max_hp;
-		this.current_hp = max_hp;
-		this.attack_value = attack_value;
-		this.special_attack_value = special_attack_value;
-		this.defense_value = defense_value;
-		this.special_defense_value = special_defense_value;
+		this.maxHp = maxHp;
+		this.currentHp = maxHp;
+		this.attackValue = attackValue;
+		this.specialAttackValue = specialAttackValue;
+		this.defenseValue = defenseValue;
+		this.specialDefenseValue = specialDefenseValue;
 	};
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public Type[] getTypes() {
+		return this.types;
+	}
+	
+	public Attack[] getAttacks() {
+		return this.attacks;
+	}
+	
+	public Status getStatus() {
+		return this.status;
+	}
 	
 	public String toString() {
 		return "Name: " + this.name + 
-				"\nHP: " + this.current_hp + "/" + this.max_hp +
-				"\nATK: " + this.attack_value +
-				"\nSPCL ATK: " + this.special_attack_value +
-				"\nDFS: " + this.defense_value +
-				"\nSPCL DFS: " + this.special_defense_value;
+				"\nHP: " + this.currentHp + "/" + this.maxHp +
+				"\nATK: " + this.attackValue +
+				"\nSPCL ATK: " + this.specialAttackValue +
+				"\nDFS: " + this.defenseValue +
+				"\nSPCL DFS: " + this.specialDefenseValue;
 	};
 }
