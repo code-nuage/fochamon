@@ -7,6 +7,8 @@ public abstract class Status {
 		this.name = name;
 	}
 	
+	public abstract void applyEffect();
+	
 	public String toString() {
 		return this.name;
 	}
