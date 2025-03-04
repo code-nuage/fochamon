@@ -1,9 +1,12 @@
 package fochamon;
 
+import java.util.ArrayList;
+
 public class Fochamon {
+	// +-- PROPERTIES --+
 	private String name;
-	private Type[] types;
-	private Attack[] attacks;
+	private ArrayList<Type> types = new ArrayList<Type>();
+	private ArrayList<Attack> attacks = new ArrayList<Attack>();
 	private Status status;
 	private int maxHp;
 	private int currentHp;
@@ -11,14 +14,17 @@ public class Fochamon {
 	private int specialAttackValue;
 	private int defenseValue;
 	private int specialDefenseValue;
+	private int speedValue;
 	
+	// +-- CONSTRUCTOR --+
 	public Fochamon(
 			String name,
 			int maxHp,
 			int attackValue,
 			int specialAttackValue,
 			int defenseValue,
-			int specialDefenseValue) {
+			int specialDefenseValue,
+			int speedValue) {
 		this.name = name;
 		this.maxHp = maxHp;
 		this.currentHp = maxHp;
@@ -26,30 +32,78 @@ public class Fochamon {
 		this.specialAttackValue = specialAttackValue;
 		this.defenseValue = defenseValue;
 		this.specialDefenseValue = specialDefenseValue;
+		this.speedValue = speedValue;
 	};
 	
-	public String getName() {
-		return this.name;
+	// +-- SETTERS --+
+	public Fochamon addType(Type type) {
+		if (this.types.size() < 2) {
+			this.types.add(type);
+		}
+		return this;
 	}
 	
-	public Type[] getTypes() {
-		return this.types;
+	public Fochamon addAttack(Attack attack) {
+		if (this.attacks.size() < 4) {
+			this.attacks.add(attack);
+		}
+		return this;
 	}
+
+	// +-- GETTERS --+
+	public String getName() { return this.name; }
 	
-	public Attack[] getAttacks() {
-		return this.attacks;
-	}
+	public ArrayList<Type> getTypes() { return this.types; }
 	
-	public Status getStatus() {
-		return this.status;
-	}
+	public ArrayList<Attack> getAttacks() { return this.attacks; }
 	
+	public Status getStatus() { return this.status; }
+	
+	public int getMaxHp() { return this.maxHp; }
+	public int getCurrentHp() { return this.currentHp; }
+	
+	public int getAttackValue() { return this.attackValue; }
+	public int getSpecialAttackValue() { return this.specialAttackValue; }
+	
+	public int getDefenseValue() { return this.defenseValue; }
+	public int getDefenseAttackValue() { return this.specialDefenseValue; }
+	
+	public int getSpeedValue() { return this.specialDefenseValue; }
+	
+	// +-- STRINGIFIER --+
 	public String toString() {
+		String typeslist = this.typesList(this.types);
+//		String attackslist = this.attacksList(this.types);
+		
 		return "Name: " + this.name + 
+				"\nTypes: " + typeslist +
+//				"\nAttacks: " + attackslist +
 				"\nHP: " + this.currentHp + "/" + this.maxHp +
 				"\nATK: " + this.attackValue +
 				"\nSPCL ATK: " + this.specialAttackValue +
 				"\nDFS: " + this.defenseValue +
-				"\nSPCL DFS: " + this.specialDefenseValue;
+				"\nSPCL DFS: " + this.specialDefenseValue +
+				"\nSPEED: " + this.speedValue;
 	};
+	
+	// +-- TOOLS --+
+	private String typesList(ArrayList<Type> types) {
+		String typelist = new String();
+		
+		for (int i = 0; i < types.size(); i++) {
+			typelist += types.get(i).getName() + " ";
+		}
+		
+		return typelist;
+	}
+	
+	private String attacksList(ArrayList<Type> attacks) {
+		String attackslist = new String();
+		
+		for (int i = 0; i < attacks.size(); i++) {
+			attackslist += attacks.get(i).getName() + " ";
+		}
+		
+		return attackslist;
+	}
 }
