@@ -6,7 +6,7 @@ public class Fire extends Type {
 	public Fire() {
 		super("Fire");
 		this
-		.addStrength(new Plant())
-		.addWeakness(new Water());
+		.addStrength(TypesList.types.get("PLANT"))
+		.addWeakness(TypesList.types.get("WATER"));
 	}
 }

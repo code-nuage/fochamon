@@ -23,7 +23,8 @@ public class Team {
 	public Team removeFochamon(Fochamon f) {
 		for (int i = 0; i < this.fochamons.size(); i++) {
 			if (this.fochamons.get(i) == f) {
-				this.fochamons.remove(i); // .remove() shifts everything after index to the left
+				this.fochamons.remove(i); 
+				// .remove() shifts everything after index to the left
 			}
 		}
 		return this;
