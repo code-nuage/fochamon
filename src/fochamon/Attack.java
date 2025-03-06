@@ -10,7 +10,8 @@ public abstract class Attack {
 	private Type type;
 	
 	// +-- CONSTRUCTOR --+
-	public Attack(String name,
+	public Attack(
+			String name,
 			String category, 
 			int power, 
 			int accuracy, 
@@ -22,31 +23,6 @@ public abstract class Attack {
 		this.power = power;
 		this.description = description;
 		this.type = type;
-	}
-	
-	// +-- GETTERS --+
-	public String getName() {
-		return this.name;
-	}
-	
-	public String getCategory() {
-		return this.category;
-	}
-	
-	public int getPower() {
-		return this.power;
-	}
-	
-	public int getAccuracy() {
-		return this.accuracy;
-	}
-	
-	public String getDescription() {
-		return this.description;
-	}
-	
-	public Type getType() {
-		return this.type;
 	}
 	
 	// +-- SETTERS --+
@@ -80,6 +56,17 @@ public abstract class Attack {
 		return this;
 	}
 	
+	// +-- GETTERS --+
+	public String getName() { return this.name; }
+	
+	public String getCategory() { return this.category; }
+	
+	public int getPower() { return this.power; }
+	
+	public int getAccuracy() { return this.accuracy; }
+	
+	public Type getType() { return this.type; }
+	
 	// +-- STRINGIFIERS --+
 	public String toString() {
 		return this.name + "\n" +
@@ -90,6 +77,6 @@ public abstract class Attack {
 			   this.type.getName();
 		} 
 	
-	// +-- ALGORYTHM --+
+	// +-- ALGORITHM --+
 	public abstract void effect();
 }
