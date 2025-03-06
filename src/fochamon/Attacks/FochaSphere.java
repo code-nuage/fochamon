@@ -1,4 +1,4 @@
-package fochamon.attacks;
+package fochamon.Attacks;
 import fochamon.Attack;
 import fochamon.Types.Fire;
 

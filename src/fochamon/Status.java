@@ -28,5 +28,7 @@ public abstract class Status {
 				"\nDescription: Fochamon " + this.description;
 	}
 	
+	
+	// +-- ALGORITHM --+
 	public abstract void applySpecialEffect();
 }
