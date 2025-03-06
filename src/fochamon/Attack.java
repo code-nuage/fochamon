@@ -6,6 +6,7 @@ public abstract class Attack {
 	private String category;
 	private int power;
 	private int accuracy;
+	private String description;
 	private Type type;
 	
 	// +-- CONSTRUCTOR --+
@@ -13,11 +14,13 @@ public abstract class Attack {
 			String category, 
 			int power, 
 			int accuracy, 
+			String description,
 			Type type) {
 		this.accuracy = accuracy;
 		this.category = category;
 		this.name = name;
 		this.power = power;
+		this.description = description;
 		this.type = type;
 	}
 	
@@ -36,6 +39,10 @@ public abstract class Attack {
 	
 	public int getAccuracy() {
 		return this.accuracy;
+	}
+	
+	public String getDescription() {
+		return this.description;
 	}
 	
 	public Type getType() {
@@ -63,6 +70,11 @@ public abstract class Attack {
 		return this;
 	}
 	
+	public Attack setDescription(String description) {
+		this.description = description;
+		return this;
+	}
+	
 	public Attack setType(Type type) {
 		this.type = type;
 		return this;
@@ -74,6 +86,7 @@ public abstract class Attack {
 			   "Category: " + this.category + "\n" +
 			   "Power: " + this.power + "\n" +
 			   "Accuracy: " + this.accuracy + "\n" +
+			   this.description + "\n" +
 			   this.type.getName();
 		} 
 	

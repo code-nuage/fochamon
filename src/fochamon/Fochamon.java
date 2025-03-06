@@ -49,6 +49,21 @@ public class Fochamon {
 		}
 		return this;
 	}
+	
+	public Fochamon removeAttack(Attack attack) {
+		for (int i = 0; i < this.attacks.size(); i++) {
+			if (this.attacks.get(i) == attack) {
+				this.attacks.remove(i);
+				return this;
+			}
+		}
+		return this;
+	}
+	
+	public Fochamon setCurrentHp(int hp) {
+		this.currentHp = hp;
+		return this;
+	}
 
 	// +-- GETTERS --+
 	public String getName() { return this.name; }
@@ -73,11 +88,11 @@ public class Fochamon {
 	// +-- STRINGIFIER --+
 	public String toString() {
 		String typeslist = this.typesList(this.types);
-//		String attackslist = this.attacksList(this.types);
+		String attackslist = this.attacksList(this.types);
 		
 		return "Name: " + this.name + 
 				"\nTypes: " + typeslist +
-//				"\nAttacks: " + attackslist +
+				"\nAttacks: " + attackslist +
 				"\nHP: " + this.currentHp + "/" + this.maxHp +
 				"\nATK: " + this.attackValue +
 				"\nSPCL ATK: " + this.specialAttackValue +
@@ -105,5 +120,13 @@ public class Fochamon {
 		}
 		
 		return attackslist;
+	}
+	
+	// +-- ALGORITHM --+
+	public boolean isKo() {
+		if (this.getCurrentHp() == 0) {
+			return true;
+		}
+		return false;
 	}
 }
