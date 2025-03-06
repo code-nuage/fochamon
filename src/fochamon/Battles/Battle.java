@@ -1,5 +1,7 @@
 package fochamon.Battles;
 
+import java.util.Random;
+import fochamon.Attack;
 import fochamon.Fochamon;
 import fochamon.Team;
 
@@ -8,8 +10,8 @@ public class Battle {
 	// +-- PROPERTIES --+
 	private Team playerTeam;
 	private Team opponentTeam;
-	private Fochamon ActivePlayer;
-	private Fochamon ActiveOpponent;
+	private Fochamon activePlayer;
+	private Fochamon activeOpponent;
 	
 	// +-- CONSTRUCTOR --+
 	public Battle(Team playerTeam, Team opponentTeam) {
@@ -17,6 +19,23 @@ public class Battle {
 		this.playerTeam = playerTeam;
 		
 		this.play();
+	}
+	
+	// +-- GETTERS --+
+	public Team getPlayerTeam() {
+		return playerTeam;
+	}
+	
+	public Team getOpponentTeam() {
+		return opponentTeam;
+	}
+	
+	public Fochamon getActivePlayer() {
+		return activePlayer;
+	}
+	
+	public Fochamon getActiveOpponent() {
+		return activeOpponent;
 	}
 	
 	// +-- ALGORITHM --+
@@ -27,13 +46,13 @@ public class Battle {
 		
 		while("Leg0" == "Leg0") {
 			i++;
-			new Turn(i);
+			new Turn(i, this);
 		}
 	}
 
 	public void initBattle() {
-		this.ActivePlayer = this.playerTeam.getFochamons().get(0);
-		this.ActiveOpponent = this.opponentTeam.getFochamons().get(0);
+		this.activePlayer = this.playerTeam.getFochamons().get(0);
+		this.activeOpponent = this.opponentTeam.getFochamons().get(0);
 	}
 	
 	public boolean checkWincon(Team team) {
@@ -46,17 +65,46 @@ public class Battle {
 		return true;
 	}
 	
+	public boolean checkSpeed() {
+		int rand = new Random().nextInt(2);
+		if (this.activePlayer.getSpeedValue() ==
+		this.activeOpponent.getSpeedValue()) {
+			if (rand == 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if (
+				this.activePlayer.getSpeedValue() > 
+				this.activeOpponent.getSpeedValue()) {
+			return true;
+		}
+		return false;
+	}
+	
 	public void dealDamage(Fochamon target, int damage) {
 		int hp = target.getCurrentHp();
 		if (hp - damage < 0) {
 			target.setCurrentHp(0);
 		} else {
-			target.setCurrentHp(damage);
+			target.setCurrentHp(hp - damage);
 		}
 	}
 	
+	// +-- ALGORITHM CHOICES --+
 	public void switchFochamonPlayer(int id) {
-		this.ActivePlayer = this.playerTeam.getFochamons().get(id);
+		this.activePlayer = this.playerTeam.getFochamons().get(id);
 	}
 	
+	public void switchFochamonOpponent(int id) {
+		this.activeOpponent = this.opponentTeam.getFochamons().get(id);
+	}
+	
+	public Attack attackChosenPlayer(int attackId) {
+		return this.activePlayer.getAttacks().get(attackId);
+	}
+	
+	public Attack attackChosenOpponent(int attackId) {
+		return this.activeOpponent.getAttacks().get(attackId);
+	}
 }
