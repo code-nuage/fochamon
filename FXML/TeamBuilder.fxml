@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
 
-<AnchorPane id="StackPane" prefHeight="720.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml" fx:controller="fochamon.Controllers.Home">
+<AnchorPane id="StackPane" prefHeight="720.0" prefWidth="1280.0" xmlns:fx="http://javafx.com/fxml" fx:controller="fochamon.Controllers.TeamBuilder">
     <VBox alignment="CENTER" spacing="16" prefWidth="1280.0" prefHeight="720.0">
         <ImageView>
             <image>
@@ -13,9 +13,8 @@
         </ImageView>
 
         <VBox alignment="CENTER" spacing="8">
-            <Button text="Construction de tchim" styleClass="primary" onAction="#teambuilder"/>
-            <Button text="Flight" styleClass="primary" onAction="#fight"/>
-            <Button text="Return to ze bureau" styleClass="secondary" onAction="#quit"/>
+            <Button text="Test" styleClass="primary"/>
+            <Button text="Back to ze accueil" styleClass="secondary" onAction="#back"/>
         </VBox>
     </VBox>
 </AnchorPane>

@@ -5,6 +5,10 @@ import javafx.application.Application;
 
 public class Main {
     public static void main(String[] args) {
-        Application.launch(Home.class);
+    	SceneManager sm = new SceneManager();
+    	
+        Application.launch(sm.getClass());
+        
+        SceneManager.setView(new Home());
     }
 }
