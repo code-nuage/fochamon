@@ -12,6 +12,7 @@ public class Home {
 	private void teambuilder() {
 		System.out.println("Test");
         SceneManager.setView(new TeamBuilder());
+        SceneManager.loadView();
 	}
 	
 	@FXML
