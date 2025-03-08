@@ -10,5 +10,6 @@ public class TeamBuilder {
 	@FXML
 	private void back() {
         SceneManager.setView(new fochamon.Views.Home());
+        SceneManager.loadView();
 	}
 }
