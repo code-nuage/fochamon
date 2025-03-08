@@ -46,6 +46,9 @@ public class Battle {
 		
 		while("Leg0" == "Leg0") {
 			i++;
+			if (this.activePlayer.isKo()) {
+				this.forceSwitch(activeOpponent);
+			}
 			new Turn(i, this);
 		}
 	}
@@ -61,14 +64,14 @@ public class Battle {
 				return false;
 			}
 		}
-		
 		return true;
 	}
 	
 	public boolean checkSpeed() {
-		int rand = new Random().nextInt(2);
+		int rand;
 		if (this.activePlayer.getSpeedValue() ==
 		this.activeOpponent.getSpeedValue()) {
+			rand = new Random().nextInt(2);
 			if (rand == 0) {
 				return true;
 			} else {
@@ -91,7 +94,9 @@ public class Battle {
 		}
 	}
 	
-	// +-- ALGORITHM CHOICES --+
+	public void forceSwitch(Fochamon fochamon) {
+	}
+	
 	public void switchFochamonPlayer(int id) {
 		this.activePlayer = this.playerTeam.getFochamons().get(id);
 	}

@@ -11,8 +11,17 @@ public class Turn {
 		this.battle = battle;
 	}
 	
+	// +-- GETTERS --+
+	public int getNumber() {
+		return this.number;
+	}
+	
 	// +-- ALGORITHM --+
-	public void optionChose(
+	public void useAttack (int id) {
+		
+	}
+	
+	public void optionsChosen(
 			boolean playerIsAttacking, 
 			boolean opponentIsAttacking) {
 		if (playerIsAttacking && opponentIsAttacking) {

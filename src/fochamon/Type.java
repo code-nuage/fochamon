@@ -69,4 +69,49 @@ public class Type {
 		
 		return modifierlist;
 	}
+	
+	// +-- ALGORITHM --+
+	public double multiplyByType(Type attacker, Type defender) {
+		double multiplier = 1;
+		
+		if (this.isWeak(attacker, defender)) {
+			multiplier = multiplier * 0.5;
+			return multiplier;
+		} else if (this.isStrong(attacker, defender)) {
+			multiplier = multiplier * 2;
+			return multiplier;
+		} else if (this.isImmune(attacker, defender)) {
+			multiplier = multiplier * 0;
+			return multiplier;
+		} else {
+			return multiplier;	
+		}
+	}
+	
+	public boolean isWeak(Type attacker, Type defender) {
+		for (int i = 0; i < defender.getStrengths().size(); i++) {
+			if (attacker == defender.getStrengths().get(i)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isStrong(Type attacker, Type defender) {
+		for (int i = 0; i < defender.getWeaknesses().size(); i++) {
+			if (attacker == defender.getWeaknesses().get(i)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isImmune(Type attacker, Type defender) {
+		for (int i = 0; i < defender.getImmunities().size(); i++) {
+			if (attacker == defender.getImmunities().get(i)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
